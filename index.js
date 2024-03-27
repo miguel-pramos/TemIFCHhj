@@ -13,9 +13,25 @@ client
 		const IFCHToday = dateFns.isToday(partyDate);
 
 		const daysWithout = dateFns.differenceInDays(today, partyDate);
-
-		console.log('TR');
+		document.querySelector('.yesNo').textContent = IFCHToday ? 'SIM!' : 'NÃO';
 		document.querySelector('.daysWithout').textContent = `Estamos há ${daysWithout} ${
 			daysWithout != 1 ? 'dias' : 'dia'
 		} sem IFCH!`;
+
+		if (IFCHToday) {
+			confetti({
+				angle: randomInRange(55, 85),
+				spread: randomInRange(60, 80),
+				particleCount: 120,
+				origin: { y: 0.3, x: 0 },
+				startVelocity: 50,
+			});
+			confetti({
+				angle: randomInRange(0, 25),
+				spread: randomInRange(60, 80),
+				particleCount: 120,
+				origin: { y: 0.3, x: 1 },
+				startVelocity: -50,
+			});
+		}
 	});
